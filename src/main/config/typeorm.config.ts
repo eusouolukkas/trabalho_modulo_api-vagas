@@ -1,15 +1,15 @@
 import { DataSource } from "typeorm";
-import "dotenv/config";
 import "reflect-metadata";
+import { appEnv } from "../../app/envs/app.env";
 
 export default new DataSource({
   type: "postgres",
-  url: process.env.DB_URL,
+  url: appEnv.databaseUrl,
   ssl: {
     rejectUnauthorized: false,
   },
   synchronize: false,
   entities: ["src/app/shared/entities/**/*.ts"],
   migrations: ["src/app/shared/migrations/**/*.ts"],
-  schema: "aula",
+  schema: "vagas",
 });

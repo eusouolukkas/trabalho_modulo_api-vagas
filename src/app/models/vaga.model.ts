@@ -1,4 +1,5 @@
 import { v4 as idVaga } from "uuid";
+import { UsuarioModel } from "./usuario.model";
 
 export class VagaModel {
   private _id: string;
@@ -8,7 +9,8 @@ export class VagaModel {
     private _empresa: string,
     private _dtLimite: Date,
     private _indAtivo: boolean,
-    private _maxCandidatos: number
+    private _recrutador: UsuarioModel,
+    private _maxCandidatos?: number
   ) {
     this._id = idVaga();
   }
@@ -45,12 +47,20 @@ export class VagaModel {
     this._indAtivo = indAtivo;
   }
 
-  public get maxCandidatos() {
+  public get maxCandidatos(): number | undefined {
     return this._maxCandidatos;
   }
 
-  public set maxCandidatos(maxCandidatos: number) {
+  public set maxCandidatos(maxCandidatos: number | undefined) {
     this._maxCandidatos = maxCandidatos;
+  }
+
+  public get recrutador() {
+    return this._recrutador;
+  }
+
+  public set recrutador(recrutador: UsuarioModel) {
+    this._recrutador = recrutador;
   }
 
   public toJson() {
@@ -61,6 +71,7 @@ export class VagaModel {
       dtLimite: this._dtLimite,
       indAtivo: this._indAtivo,
       maxCandidatos: this._maxCandidatos,
+      recrutador: this._recrutador,
     };
   }
 
@@ -70,13 +81,15 @@ export class VagaModel {
     empresa: string,
     dtLimite: Date,
     indAtivo: boolean,
-    maxCandidatos: number
+    recrutador: UsuarioModel,
+    maxCandidatos?: number
   ) {
     const vaga = new VagaModel(
       descricao,
       empresa,
       dtLimite,
       indAtivo,
+      recrutador,
       maxCandidatos
     );
     vaga._id = id;

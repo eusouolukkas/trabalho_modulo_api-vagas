@@ -29,7 +29,9 @@ export class VagaEntity {
   @Column()
   maxCandidatos: number;
 
-  @Column()
+  @Column({
+    name: "id_recrutador",
+  })
   idRecrutador: string;
 
   @CreateDateColumn({
@@ -44,7 +46,7 @@ export class VagaEntity {
 
   @ManyToOne(() => UserEntity)
   @JoinColumn({
-    name: "id_usuario",
+    name: "id_recrutador",
   })
   usuario: UserEntity;
 }

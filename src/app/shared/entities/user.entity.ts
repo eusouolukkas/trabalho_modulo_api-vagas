@@ -3,15 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 
 @Entity({
-  name: "user",
+  name: "usuario",
 })
 export class UserEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryColumn()
   id!: string;
 
   @Column({
@@ -21,17 +20,21 @@ export class UserEntity {
 
   @Column({
     length: 60,
+    unique: true,
   })
   username: string;
 
   @Column()
-  senha: number;
+  senha: string;
 
-  @Column()
+  @Column({
+    length: 1,
+  })
   tipo: string;
 
   @Column({
     length: 60,
+    nullable: true,
   })
   empresa: string;
 
