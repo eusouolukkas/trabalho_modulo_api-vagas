@@ -20,7 +20,7 @@ export class UserRepository {
     return this.mapEntityToModel(result);
   }
 
-  public async findByUsernamePassword(username: string, senha: string) {
+  public async findByUsernamePassword(username: string, senha?: string) {
     const result = await this._repository.findOneBy({
       username,
       senha,
@@ -43,5 +43,13 @@ export class UserRepository {
     );
 
     return user;
+  }
+
+  public async find(tipo?: string) {
+    const result = await this._repository.findBy({ tipo });
+
+    return result.map((item) => {
+      return this.mapEntityToModel(item);
+    });
   }
 }

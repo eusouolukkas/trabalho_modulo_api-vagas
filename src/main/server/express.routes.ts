@@ -1,4 +1,5 @@
 import { Router, Express } from "express";
+import { candidatoRoutes } from "../../app/features/candidato/routes/candidato.routes";
 import { loginRoutes } from "../../app/features/login/routes/login.routes";
 import { recrutadorRoutes } from "../../app/features/recrutador/routes/recrutador.routes";
 
@@ -12,4 +13,5 @@ export const createRoutes = (app: Express) => {
 
   app.use("/recrutador", recrutadorRoutes());
   app.use("/auth", loginRoutes());
+  app.use("/candidato", candidatoRoutes());
 };
