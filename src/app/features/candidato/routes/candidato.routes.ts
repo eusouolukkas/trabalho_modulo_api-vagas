@@ -11,5 +11,11 @@ export const candidatoRoutes = () => {
     new CandidatoController().create
   );
 
+  router.get(
+    "/",
+
+    new CandidatoController().list
+  );
+
   return router;
 };

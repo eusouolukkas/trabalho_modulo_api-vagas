@@ -28,6 +28,8 @@ export const createCandidatoValidator = (
         message: "senha é obrigatória!",
       });
     }
+
+    return next();
   } catch (error: any) {
     return res.status(500).send({
       ok: false,

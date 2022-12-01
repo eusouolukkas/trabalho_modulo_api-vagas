@@ -18,6 +18,8 @@ export const checkDuplicateRecrutadorValidator = async (
         message: "recrutador já existe!",
       });
     }
+
+    return next();
   } catch (error: any) {
     return res.status(500).send({
       ok: false,

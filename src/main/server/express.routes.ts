@@ -14,4 +14,5 @@ export const createRoutes = (app: Express) => {
   app.use("/recrutador", recrutadorRoutes());
   app.use("/auth", loginRoutes());
   app.use("/candidato", candidatoRoutes());
+  //app.use("/candidato", candidatoRoutes());
 };

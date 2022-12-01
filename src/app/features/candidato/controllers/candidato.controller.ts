@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateCandidatoUseCase } from "../usecase/create-candidato.usecase";
+import { ListCandidatoUseCase } from "../usecase/list-create-candidato.usecase";
 
 export class CandidatoController {
   public async create(req: Request, res: Response) {
@@ -16,6 +17,24 @@ export class CandidatoController {
       return res.status(201).send({
         ok: true,
         message: "Candidato criado com sucesso",
+        data: result,
+      });
+    } catch (error: any) {
+      return res.status(500).send({
+        ok: false,
+        message: error.toString(),
+      });
+    }
+  }
+
+  public async list(req: Request, res: Response) {
+    try {
+      const usecase = new ListCandidatoUseCase();
+      const result = await usecase.execute();
+
+      return res.status(200).send({
+        ok: true,
+        message: "Candidatos listados com sucesso!",
         data: result,
       });
     } catch (error: any) {
