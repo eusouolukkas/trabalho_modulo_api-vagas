@@ -17,10 +17,6 @@ export class UsuarioModel {
     return this._id;
   }
 
-  public set id(id: string) {
-    this._id = id;
-  }
-
   public get nome() {
     return this._nome;
   }

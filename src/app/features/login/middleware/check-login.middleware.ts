@@ -21,6 +21,8 @@ export const checkLoginMiddleware = (
 
     req.headers["user"] = JSON.stringify(valid);
 
+    console.log(req.headers["user"]);
+
     return next();
   } catch (error: any) {
     return res.status(401).send({

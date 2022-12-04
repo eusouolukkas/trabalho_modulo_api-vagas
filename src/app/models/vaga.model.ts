@@ -19,16 +19,20 @@ export class VagaModel {
     return this._id;
   }
 
-  public set id(id: string) {
-    this._id = id;
-  }
-
   public get descricao() {
     return this._descricao;
   }
 
   public set descricao(descricao: string) {
     this._descricao = descricao;
+  }
+
+  public get empresa() {
+    return this._empresa;
+  }
+
+  public set empresa(empresa: string) {
+    this._empresa = empresa;
   }
 
   public get dtLimite() {
@@ -66,12 +70,12 @@ export class VagaModel {
   public toJson() {
     return {
       id: this._id,
-      descricao: this._descricao,
-      empresa: this._empresa,
-      dtLimite: this._dtLimite,
-      indAtivo: this._indAtivo,
-      maxCandidatos: this._maxCandidatos,
-      recrutador: this._recrutador,
+      descricao: this.descricao,
+      empresa: this.empresa,
+      dtLimite: this.dtLimite,
+      indAtivo: this.indAtivo,
+      maxCandidatos: this.maxCandidatos,
+      recrutador: this.recrutador.toJson(),
     };
   }
 
@@ -93,5 +97,7 @@ export class VagaModel {
       maxCandidatos
     );
     vaga._id = id;
+
+    return vaga;
   }
 }

@@ -4,17 +4,19 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { CandidaturaEntity } from "./candidatura.entity";
 import { UserEntity } from "./user.entity";
 
 @Entity({
   name: "vaga",
 })
 export class VagaEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryColumn()
   id!: string;
 
   @Column()
@@ -44,9 +46,14 @@ export class VagaEntity {
   })
   update: Date;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, {
+    eager: true,
+  })
   @JoinColumn({
     name: "id_recrutador",
   })
-  usuario: UserEntity;
+  recrutador: UserEntity;
+
+  @OneToMany(() => CandidaturaEntity, (cand) => cand.vaga)
+  candidaturas: CandidaturaEntity[];
 }

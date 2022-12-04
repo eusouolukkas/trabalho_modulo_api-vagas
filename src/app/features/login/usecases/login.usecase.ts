@@ -18,7 +18,7 @@ export class LoginUseCase {
       return null;
     }
 
-    const user = result?.toJson();
+    const user = result.toJson();
 
     //gerar o token de autenticação p/ retornar o usuario com o token
 

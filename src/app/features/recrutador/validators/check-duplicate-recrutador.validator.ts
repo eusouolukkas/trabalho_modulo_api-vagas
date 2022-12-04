@@ -23,7 +23,7 @@ export const checkDuplicateRecrutadorValidator = async (
   } catch (error: any) {
     return res.status(500).send({
       ok: false,
-      message: "",
+      message: error.toString(),
     });
   }
 };

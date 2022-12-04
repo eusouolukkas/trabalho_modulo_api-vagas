@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-export const checkLoginRecrutadorMiddleware = (
+export const checkLoginCandidatoMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -17,21 +17,17 @@ export const checkLoginRecrutadorMiddleware = (
 
     const user = JSON.parse(userHeader.toString());
 
-    if (user !== "R") {
+    if (user !== "C") {
       return res.status(403).send({
         ok: false,
-        message: "usuário deve ser do tipo recrutador",
+        message: "usuário deve ser do tipo candidato",
       });
     }
 
-    //console.log(req.body);
-
     req.body = {
       ...req.body,
-      idRecrutador: user.id,
+      idCandidato: user.id,
     };
-
-    //console.log(req.body);
 
     return next();
   } catch (error: any) {
