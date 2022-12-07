@@ -17,7 +17,7 @@ export const checkLoginCandidatoMiddleware = (
 
     const user = JSON.parse(userHeader.toString());
 
-    if (user !== "C") {
+    if (user.tipo !== "C") {
       return res.status(403).send({
         ok: false,
         message: "usuário deve ser do tipo candidato",

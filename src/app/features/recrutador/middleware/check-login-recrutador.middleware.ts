@@ -17,7 +17,7 @@ export const checkLoginRecrutadorMiddleware = (
 
     const user = JSON.parse(userHeader.toString());
 
-    if (user !== "R") {
+    if (user.tipo !== "R") {
       return res.status(403).send({
         ok: false,
         message: "usuário deve ser do tipo recrutador",
