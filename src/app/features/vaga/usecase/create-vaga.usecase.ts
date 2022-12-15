@@ -12,9 +12,16 @@ interface CreateVagaDTO {
 }
 
 export class CreateVagaUseCase {
+  readonly #userRepository: UserRepository;
+  readonly #vagaRepository: VagaRepository;
+
+  constructor(userRepository: UserRepository, vagaRepository: VagaRepository) {
+    this.#userRepository = userRepository;
+    this.#vagaRepository = vagaRepository;
+  }
+
   public async execute(data: CreateVagaDTO) {
-    const usuarioRepository = new UserRepository();
-    const usuarioResult = await usuarioRepository.get(data.idRecrutador);
+    const usuarioResult = await this.#userRepository.get(data.idRecrutador);
 
     if (!usuarioResult) {
       return null;
@@ -29,8 +36,7 @@ export class CreateVagaUseCase {
       data.maxCandidatos
     );
 
-    const repository = new VagaRepository();
-    const result = await repository.create(vaga);
+    const result = await this.#vagaRepository.create(vaga);
 
     return result.toJson();
   }

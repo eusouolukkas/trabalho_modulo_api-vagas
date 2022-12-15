@@ -1,9 +1,9 @@
-import { ListCandidatoUseCase } from "../../../../src/app/features/candidato/usecase/list-create-candidato.usecase";
-import { UserRepository } from "../../../../src/app/features/user/repositories/user.repository";
-import { UsuarioModel } from "../../../../src/app/models/usuario.model";
-import { CacheRepository } from "../../../../src/app/shared/repositories/cache.repository";
-import { CacheConnection } from "../../../../src/main/database/cache.connection";
-import { DataBaseConnection } from "../../../../src/main/database/typeorm.connection";
+import { ListCandidatoUseCase } from "../../../../../src/app/features/candidato/usecase/list-create-candidato.usecase";
+import { UserRepository } from "../../../../../src/app/features/user/repositories/user.repository";
+import { UsuarioModel } from "../../../../../src/app/models/usuario.model";
+import { CacheRepository } from "../../../../../src/app/shared/repositories/cache.repository";
+import { CacheConnection } from "../../../../../src/main/database/cache.connection";
+import { DataBaseConnection } from "../../../../../src/main/database/typeorm.connection";
 
 interface SutTypes {
   repository: UserRepository;
